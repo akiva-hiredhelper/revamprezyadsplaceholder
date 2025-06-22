@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Monetag site verification -->
-  <meta name="monetag" content="7b4297e2166a6284a822dfbb7e211d2a" />
+  <meta name="monetag" content="7b4297e2166a6284a822dfbb7e211d2a">
 
-  <title>Monetag In-Page Push Test</title>
+  <title>Monetag In-Page Push with Anti-Adblock</title>
 
-  <!-- Load the Monetag SDK for zone 9480254 -->
+  <!-- 1) Anti-Adblock helper -->
+  <script async src="https://sdk.monetag.com/monetag-anti-adblock.js"></script>
+
+  <!-- 2) Monetag In-Page Push SDK -->
   <script
     async
     src="https://sdk.monetag.com/monetag.js"
@@ -20,18 +23,28 @@
 <body>
   <h1>Hello World</h1>
 
-  <!-- Optional container for the banner -->
+  <!-- 3) Banner container -->
   <div id="monetag-banner"></div>
 
-  <!-- Fire the in-page banner on load -->
+  <!-- 4) Fire the banner as soon as possible -->
   <script>
-    window.addEventListener('load', () => {
-      if (typeof show_9480254 === 'function') {
-        show_9480254()
-          .then(() => console.log('Monetag banner displayed'))
-          .catch(console.error);
+    (function() {
+      function displayMonetagBanner() {
+        if (typeof show_9480254 === 'function') {
+          show_9480254()
+            .catch(console.error);
+        } else {
+          // Retry once anti-adblock or SDK finishes loading
+          setTimeout(displayMonetagBanner, 200);
+        }
       }
-    });
+
+      // Try on load
+      window.addEventListener('load', displayMonetagBanner);
+
+      // Also try after a short delay in case load event fired early
+      setTimeout(displayMonetagBanner, 500);
+    })();
   </script>
 
   <h3>Post Ad</h3>
