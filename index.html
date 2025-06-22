@@ -1,26 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="monetag" content="7b4297e2166a6284a822dfbb7e211d2a">
-  <title>Banner Test</title>
-  <script async
-          src="https://sdk.monetag.com/monetag.js"
-          data-zone="7b4297e2166a6284a822dfbb7e211d2a"
-          data-sdk="show_7b4297e2166a6284a822dfbb7e211d2a">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Monetag site verification -->
+  <meta name="monetag" content="7b4297e2166a6284a822dfbb7e211d2a" />
+
+  <title>Monetag In-Page Push Test</title>
+
+  <!-- Load the Monetag SDK for zone 9480254 -->
+  <script
+    async
+    src="https://sdk.monetag.com/monetag.js"
+    data-zone="9480254"
+    data-sdk="show_9480254">
   </script>
 </head>
 <body>
   <h1>Hello World</h1>
 
-  <!-- This container will get your banner -->
+  <!-- Optional container for the banner -->
   <div id="monetag-banner"></div>
 
+  <!-- Fire the in-page banner on load -->
   <script>
     window.addEventListener('load', () => {
-      show_7b4297e2166a6284a822dfbb7e211d2a()
-        .then(() => console.log('banner displayed'))
-        .catch(console.error);
+      if (typeof show_9480254 === 'function') {
+        show_9480254()
+          .then(() => console.log('Monetag banner displayed'))
+          .catch(console.error);
+      }
     });
   </script>
 
