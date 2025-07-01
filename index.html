@@ -10,17 +10,28 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    #clock {
+      font-family: monospace;
+      font-size: 1.2em;
+      color: #333;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
   <h1>Hello World</h1>
- <!-- Ezoic - mytest_bottom_of_page - bottom_of_page -->
-<div id="ezoic-pub-ad-placeholder-118"></div>
-<!-- End Ezoic - mytest_bottom_of_page - bottom_of_page -->
+  <div id="clock">Loading time...</div>
+
+  <!-- Ezoic - mytest_bottom_of_page - bottom_of_page -->
+  <div id="ezoic-pub-ad-placeholder-118"></div>
+  <!-- End Ezoic - mytest_bottom_of_page - bottom_of_page -->
   <script>
       ezstandalone.cmd.push(function () {
           ezstandalone.showAds(118);
       });
   </script>
+
   <h3>Post Ad</h3>
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus aliquam neque, ac convallis erat ornare at. Suspendisse congue mollis ex quis dapibus. Curabitur sodales mauris sed justo sollicitudin, sed vestibulum libero sollicitudin. Suspendisse euismod felis eu erat commodo tincidunt. Ut aliquam, lectus vitae tincidunt condimentum, arcu nunc facilisis odio, quis sodales ex ex a mi. Nunc dignissim commodo ligula, vel luctus eros consectetur id. In pretium feugiat massa, nec mattis metus ullamcorper elementum. Sed eget ipsum nec sapien porta euismod id sed ex. Phasellus id egestas diam, ac semper tellus. Sed suscipit molestie lectus, eu porta libero egestas vulputate. Mauris aliquam lacus lorem, eu vehicula tortor congue non. Etiam sed magna vulputate, porttitor mauris in, cursus erat. Integer in magna nibh. Aliquam mattis tellus ut aliquet molestie. Nam tristique leo ante, sollicitudin vehicula libero vestibulum a. Suspendisse odio augue, facilisis non ullamcorper nec, fringilla a odio.
@@ -33,5 +44,17 @@
 
     Aliquam aliquet placerat ligula vel interdum. Fusce tempor ante fringilla sapien molestie, sed molestie augue accumsan. Aliquam nec nunc euismod, cursus dui sed, porttitor turpis. Integer eleifend erat nec libero volutpat, eu mattis elit fermentum. In in libero eu nisi finibus ornare. Etiam aliquam at risus in mollis. Nam accumsan blandit ante, vel interdum leo pellentesque aliquam. Quisque suscipit hendrerit placerat. Nullam consectetur imperdiet pulvinar. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus dapibus placerat lacinia. Fusce eget ex risus. In id rutrum metus. Mauris placerat pretium leo. Donec euismod gravida ex, sed vehicula enim tristique vitae.  
   </p>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mm = String(now.getMinutes()).padStart(2, '0');
+      const ss = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('clock').textContent = `Current time: ${hh}:${mm}:${ss}`;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
 </body>
 </html>
