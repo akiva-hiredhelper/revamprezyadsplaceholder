@@ -1,5 +1,9 @@
 #Ads.txt revamprezy.com
 #Ads.txt managed by AdsTxtManager.com - the free ads.txt management tool for publishers
+
+subdomain=rezyrate.revamprezy.com
+
+
 ownerdomain=revamprezy.com
 contact=directsales@ezoic.com
 managerdomain=ezoic.ai
